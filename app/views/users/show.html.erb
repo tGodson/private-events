@@ -1,0 +1,82 @@
+<div class="container card mt-3">
+    <div class='row'>
+        <div class='col-6'>
+            <h1>Events you created:</h1>
+            <% @created_events.each do |event| %>
+            <p><strong>Host:</strong>
+                <%= event.creator.username.capitalize %>
+            </p>
+            <p><strong>Date:</strong>
+                <%= event.date %>
+            </p>
+            <p><strong>Title:</strong>
+                <%= event.title %>
+            </p>
+            <p><strong>Description:</strong>
+                <%= event.description %>
+            </p>
+            <p class="border-bottom border-success"><strong>Location:</strong>
+                <%= event.location %>
+            </p>
+            <% end %>
+        </div>
+
+		  <div class='col-6'>
+            <h1>Events you attended:</h1>
+            <% @attended_events.each do |event| %>
+            <p><strong>Host:</strong>
+                <%= event.creator.username.capitalize %>
+            </p>
+            <p><strong>Date:</strong>
+                <%= event.date %>
+            </p>
+            <p><strong>Title:</strong>
+                <%= event.title %>
+            </p>
+            <p><strong>Description:</strong>
+                <%= event.description %>
+            </p>
+            <p class="border-bottom border-success"><strong>Location:</strong>
+                <%= event.location %>
+            </p>
+            <% end %>
+        </div>
+
+
+        <div class='col-6 border-left border-success'>
+            <h3>Upcoming events</h1>
+                <% @upcoming_events.each do |event| %>
+                <h1>Events created by host:
+                    <%= event.creator.username %>
+                </h1>
+                <p><strong>Date:</strong>
+                    <%= event.date %>
+                </p>
+                <p><strong>Title:</strong>
+                    <%= event.title %>
+                </p>
+                <p><strong>Location:</strong>
+                    <%= event.location %>
+                </p>
+                <% end %>
+                <hr>
+                <h3>Past Events</h1>
+                    <% @previous_events.each do |event| %>
+                    <h3>Events created by host:
+                        <%= event.creator.username %>
+                        </h1>
+                        <p><strong>Date:</strong>
+                            <%= event.date %>
+                        </p>
+                        <p><strong>Title:</strong>
+                            <%= event.title %>
+                        </p>
+                        <p><strong>Location:</strong>
+                            <%= event.location %>
+                        </p>
+                        <% end %>
+        </div>
+        <p>
+            <%= link_to 'Back to Home', root_path, class: 'btn btn-warning ml-2' %>
+        </p>
+    </div>

@@ -1,0 +1,36 @@
+<div class = "container mt-3">
+  <% if logged_in? %>
+    <%= link_to 'Create new event', new_event_path, class: 'btn btn-success mb-2' %>
+  <% end -%>
+  <div class = 'row'>
+      <div class = 'col-6 card p-3 text-center'>
+          <h3>All events</h3>
+              <% @events.each do |event| %>
+                  <p><strong>Date:</strong> <%= event.date %></p>
+                  <p><strong>Title:</strong> <%= event.title %></p>
+                  <p><strong>Description:</strong> <%= event.description %></p>
+                  <p><strong>Location:</strong> <%= event.location %></p>
+                  <p><strong>Host:</strong> <%= event.creator.username.capitalize %></p>
+                  <p><%= link_to 'Check attendee here', event_path(event), class: 'btn btn-warning' %> </p>
+                  <hr>
+              <% end %>
+      </div>
+
+      <div class = 'col-6 card p-3 text-center'>
+        <h3>Upcoming events</h3>
+        <% @upcoming_events.each do |event| %>
+        <p><strong>Host:</strong> <%= event.creator.username.capitalize %></p>
+        <p><strong>Date:</strong> <%= event.date %></p>
+        <p><strong>Title:</strong> <%= event.title %></p>
+        <p class= "border-bottom border-success pb-3"><strong>Location:</strong> <%= event.location %></p>
+        <% end %>
+        <h3>Past Events</h3>
+        <% @previous_events.each do |event| %>
+        <p><strong>Host:</strong> <%= event.creator.username.capitalize %></p>
+        <p><strong>Date:</strong> <%= event.date %></p>
+        <p><strong>Title:</strong> <%= event.title %></p>
+        <p class= "border-bottom border-success pb-3"><strong>Location:</strong> <%= event.location %></p>
+        <% end %>
+      </div>
+  </div>
+</div>
